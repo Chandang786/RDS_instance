@@ -5,6 +5,13 @@
 *.tfstate
 *.tfstate.*
 
+#backend
+backend.tf
+
+
+#default value for variable from tfvars file
+.tfvars
+
 # Crash log files
 crash.log
 

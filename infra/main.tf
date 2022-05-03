@@ -12,8 +12,7 @@ module "mysqlrds" {
   allocated_storage      = var.allocated_storage
   vpc_security_group_ids = module.securitygroups.security_group_id
   password               = var.password
-  depends_on = [module.securitygroups
-  ]
+  depends_on = [module.securitygroups]
 }
 
 

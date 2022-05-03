@@ -5,6 +5,11 @@ module "securitygroups" {
   description = var.sg_description
 }
 
+variable "accesskey"{
+}
+variable "secret_key"{
+}  
+  
 module "mysqlrds" {
   source                 = "../module/rds"
   db_name                = var.db_name

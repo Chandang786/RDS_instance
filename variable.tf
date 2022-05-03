@@ -48,3 +48,7 @@ variable "tags" {
   type        = map(string)
   default     = { type = "RDS" }
 }
+
+variable "accesskey"{}
+
+variable "secret_key"{}

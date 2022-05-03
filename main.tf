@@ -1,8 +1,3 @@
-variable "accesskey"{
-}
-
-variable "secret_key"{
-}
 
 resource "aws_security_group" "RDS_MYSQL" {
   name        = var.name

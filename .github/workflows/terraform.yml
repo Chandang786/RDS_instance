@@ -81,7 +81,7 @@ jobs:
         aws-region: us-west-2
 
 
-    #print secret values
+    #print secret valuess
     - name: Printsecrete
       run: echo "${{ secrets.access_key }}"
       

@@ -1,13 +1,13 @@
 
 module "securitygroups" {
-  source      = "../module/security_group"
+  source      = "Chandang786/RDS_instance/module/security_group"
   name        = var.sg_name
   description = var.sg_description
 }
 
 
 module "mysqlrds" {
-  source                 = "../module/rds"
+  source                 = "Chandang786/RDS_instance/module/rds"
   db_name                = var.db_name
   user_name              = var.user_name
   allocated_storage      = var.allocated_storage

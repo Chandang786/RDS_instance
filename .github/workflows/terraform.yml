@@ -69,8 +69,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
       with:
-        repository: Chandang786/RDS_instance
-        path: RDS_instance/infra/
+        path: RDS_instance/infra
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Configure AWS Credentials

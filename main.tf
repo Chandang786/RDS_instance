@@ -1,6 +1,6 @@
 
 resource "aws_security_group" "RDS_MYSQL" {
-  name        = var.name
+  name        = "SGApril2022_terraformtest"
   description = var.description
 
 

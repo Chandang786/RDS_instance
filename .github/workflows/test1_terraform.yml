@@ -90,7 +90,7 @@ jobs:
     - name: Terraform Format
       run: terraform fmt 
 
-    # Generates an execution plan for Terraform
+    # Generates an execution plan for Terraformm
     - name: Terraform Plan
       run: terraform plan -var 'accesskey=${{ secrets.access_key }}' -var 'secret_key=${{ secrets.secret_key }}' -var 'name="SGterraformdemo1@chandanJOB"'
 

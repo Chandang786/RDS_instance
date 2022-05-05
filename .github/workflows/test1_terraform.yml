@@ -98,4 +98,4 @@ jobs:
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      run: terraform apply -auto-approve -var 'accesskey="AKIAQDRYIGWXJQ6ZT72L"' -var 'secret_key="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"' -var 'name="SGterraformdemo1"'
+      run: terraform apply -auto-approve -var 'accesskey=${{ secrets.access_key }}' -var 'secret_key=${{ secrets.secret_key }}' -var 'name="SGterraformdemo1"'

@@ -81,8 +81,10 @@ jobs:
 
 
     #print secret valuess
-    - name: Printsecrete
-      run: echo "${{ secrets.access_key }}"
+    - name: SHOW PATH
+      run: |
+        ped
+        ls
       
     # Initialize aa new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init

@@ -83,7 +83,7 @@ jobs:
     #print secret valuess
     - name: SHOW PATH
       run: |
-        ped
+        pwd
         ls
       
     # Initialize aa new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.

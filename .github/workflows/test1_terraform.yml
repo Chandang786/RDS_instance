@@ -125,5 +125,5 @@ jobs:
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: |
         cd infra/
-        terraform apply -auto-approve -var 'accesskey=${{ secrets.access_key }}' -var 'secret_key=${{ secrets.secret_key }}' -var 'name="SGterraformdemo1"'
+        terraform apply -auto-approve -var 'accesskey=${{ secrets.access_key }}' -var 'secret_key=${{ secrets.secret_key }}' -var 'password="SGterraformdemo1"'
         ls

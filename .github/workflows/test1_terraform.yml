@@ -48,6 +48,10 @@ on:
   push:
     branches:
     - main
+    paths:
+      - infra/**
+      - module/**
+
   pull_request:
     paths:
       - infra/**
@@ -72,6 +76,8 @@ jobs:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
       uses: actions/checkout@v3
+    
+
 
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
@@ -88,10 +94,15 @@ jobs:
       run: |
         pwd
         ls
-      
+        cd infra/
+        echo "updated path"
+        ls
+
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
-      run: terraform init
+      run: |
+        ls
+        terraform init
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format

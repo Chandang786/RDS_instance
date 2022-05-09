@@ -57,10 +57,11 @@ permissions:
   contents: read
 
 jobs:
-  terraform:
-    name: 'Terraform'
+  project:
+    name: 'Myfirst_Project'
     runs-on: self-hosted
     environment: production
+    
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
@@ -71,6 +72,7 @@ jobs:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
       uses: actions/checkout@v3
+
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Configure AWS Credentials

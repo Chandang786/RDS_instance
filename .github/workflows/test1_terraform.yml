@@ -63,7 +63,7 @@ jobs:
     name: 'Myfirst_Project'
     runs-on: self-hosted
     env:
-      working-directory: RDS_instance/infra/
+      working-directory: infra/
     
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
@@ -119,7 +119,7 @@ jobs:
       working-directory: ${{ env.working-directory }}
 
     - name: Setup Infra cost
-      run:  infracost/actions/setup@v1
+      uses:  infracost/actions/setup@v1
       with:
         api-key: ${{ secrets.INFRACOST_API_KEY }}
 

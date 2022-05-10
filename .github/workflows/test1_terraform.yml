@@ -53,9 +53,7 @@ on:
       - module/**
 
   pull_request:
-    paths:
-      - infra/**
-      - module/**
+  
 
 permissions:
   contents: read

@@ -115,7 +115,7 @@ jobs:
       working-directory: ${{ env.working-directory }}
       
     - name: show plan
-      run: terraform show
+      run: terraform show -json tfplan.binary > plan.json
       working-directory: ${{ env.working-directory }}
 
     - name: Setup Infra cost

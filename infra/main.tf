@@ -7,7 +7,6 @@ module "securitygroups" {
 
 
 module "mysqlrds" {
-  
   source                 = "../module/rds"
   db_name                = var.db_name
   user_name              = var.user_name

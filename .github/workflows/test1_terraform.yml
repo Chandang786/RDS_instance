@@ -65,6 +65,8 @@ jobs:
     name: 'Myfirst_Project'
     runs-on: self-hosted
     environment: production
+    env:
+      working-directory: RDS_instance/infra/
     
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
@@ -94,30 +96,42 @@ jobs:
       run: |
         pwd
         ls
-        cd infra/
-        echo "updated path"
-        ls
+      working-directory: ${{ env.working-directory }}
+        
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: |
-        cd infra/
         terraform init
-        ls
+      working-directory: ${{ env.working-directory }}
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
       run: |
-        cd infra/
         terraform fmt 
-        ls
+      working-directory: ${{ env.working-directory }}
 
     # Generates an execution plan for Terraformm
     - name: Terraform Plan
       run: |
-        cd infra/
-        terraform plan -var 'accesskey=${{ secrets.access_key }}' -var 'secret_key=${{ secrets.secret_key }}' -var 'password="SGterraformdemo1@chandanJOB"'
-        ls
+        terraform plan -var 'accesskey=${{ secrets.access_key }}' -var 'secret_key=${{ secrets.secret_key }}' -var 'password="SGterraformdemo1@chandanJOB"' -out tfplan.binary
+      working-directory: ${{ env.working-directory }}
+      
+    - name: show plan
+      run: terraform show
+      working-directory: ${{ env.working-directory }}
+
+    - name: Setup Infra cost
+      run:  infracost/actions/setup@v1
+      with:
+        api-key: ${{ secrets.INFRACOST_API_KEY }}
+        
+      # Generate Infracost JSON output, the following docs might be useful:
+      # Multi-project/workspaces: https://www.infracost.io/docs/features/config_file
+      # Combine Infracost JSON files: https://www.infracost.io/docs/features/cli_commands/#combined-output-formats
+    - name: Generate Infracost JSON
+      run: infracost breakdown --path plan.json --format json --out-file /tmp/infracost.json
+      working-directory: ${{ env.working-directory }}        
 
       # On push to main, build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
